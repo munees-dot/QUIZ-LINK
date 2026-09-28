@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS II Unit 4 Quiz | Abacus Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#0f7a4a; --green2:#16a765; --ice:#1d6fb8; --ice2:#5fb2ff;
+  --ink:#1b2430; --muted:#5b6776; --bg:#f3f7f5; --card:#ffffff; --line:#dfe7e3;
+  --gold:#f4b400; --red:#d64545; --soft-g:#e7f6ee; --soft-b:#e6f1fc;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins','Noto Sans Malayalam',sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
+.ml,.en{font-family:'Noto Sans Malayalam','Poppins',sans-serif}
+body.en .ml{display:none!important}
+body:not(.en) .en{display:none!important}
+
+/* Header */
+.topbar{position:sticky;top:0;z-index:50;background:linear-gradient(90deg,#0b5d39,#0f7a4a 45%,#1d6fb8);color:#fff;box-shadow:0 3px 14px rgba(0,0,0,.18)}
+.topbar-in{max-width:1100px;margin:auto;display:flex;align-items:center;gap:12px;padding:10px 16px}
+.logo{width:42px;height:42px;border-radius:12px;background:#fff;color:var(--green);display:grid;place-items:center;font-weight:800;font-size:18px;flex-shrink:0}
+.brand b{display:block;font-size:16px;letter-spacing:.5px}
+.brand small{opacity:.85;font-size:12px}
+.spacer{flex:1}
+.btn{border:0;border-radius:999px;padding:8px 14px;font:600 13px 'Poppins',sans-serif;cursor:pointer;transition:.2s}
+.btn-w{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35)}
+.btn-w:hover{background:rgba(255,255,255,.3)}
+.btn-w.on{background:#fff;color:var(--green)}
+.lang{display:flex;background:rgba(0,0,0,.18);border-radius:999px;padding:3px}
+.lang button{border:0;background:transparent;color:#fff;padding:6px 12px;border-radius:999px;font:600 12px 'Poppins';cursor:pointer}
+.lang button.on{background:#fff;color:var(--green)}
+
+/* Hero */
+.hero{max-width:1100px;margin:18px auto 0;padding:0 16px}
+.hero-card{border-radius:22px;overflow:hidden;background:linear-gradient(120deg,#0f7a4a 0%,#138a55 38%,#3a8fd6 62%,#bfe3ff 100%);color:#fff;padding:26px 24px;position:relative}
+.hero-card::after{content:"❄";position:absolute;right:22px;top:10px;font-size:90px;opacity:.25}
+.hero-card::before{content:"🌴";position:absolute;right:120px;bottom:6px;font-size:70px;opacity:.25}
+.tag{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);padding:3px 12px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.5px}
+.hero h1{font-size:clamp(22px,4vw,34px);line-height:1.35;margin:10px 0 6px;font-weight:800;max-width:760px}
+.hero p{max-width:720px;opacity:.95;font-size:15px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.stat{background:rgba(255,255,255,.18);border-radius:14px;padding:8px 14px;font-size:13px}
+.stat b{font-size:18px;display:block;line-height:1.2}
+
+/* Tabs */
+.tabs-wrap{max-width:1100px;margin:16px auto 0;padding:0 16px;position:sticky;top:62px;z-index:40}
+.tabs{display:flex;gap:6px;overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:6px;box-shadow:0 4px 14px rgba(15,122,74,.08);scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;border:0;background:transparent;padding:9px 14px;border-radius:11px;font:600 13px 'Poppins';color:var(--muted);cursor:pointer;white-space:nowrap}
+.tab.on{background:linear-gradient(90deg,var(--green),var(--ice));color:#fff}
+.tab.quiz-tab{color:var(--red)}
+.tab.quiz-tab.on{color:#fff;background:linear-gradient(90deg,#d64545,#f08a24)}
+
+main{max-width:1100px;margin:16px auto 40px;padding:0 16px}
+.panel{display:none;animation:fade .3s}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+h2.sec{font-size:20px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+h2.sec .ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:18px}
+.eq .ico{background:var(--soft-g)} .tu .ico{background:var(--soft-b)}
+h3{font-size:16px;margin:14px 0 6px;color:var(--green)}
+.tu h3{color:var(--ice)}
+ul.pts{padding-left:20px}
+ul.pts li{margin:4px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.mini{border-radius:14px;padding:14px;border:1px solid var(--line)}
+.mini.g{background:var(--soft-g);border-color:#bfe6d0}
+.mini.b{background:var(--soft-b);border-color:#bcd9f5}
+.mini h4{font-size:15px;margin-bottom:4px}
+.box{border-left:4px solid var(--gold);background:#fff8e1;border-radius:10px;padding:10px 14px;margin:10px 0;font-size:14.5px}
+.box.blue{border-color:var(--ice);background:var(--soft-b)}
+.box.green{border-color:var(--green);background:var(--soft-g)}
+.chip{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin:3px 3px 0 0;font-size:13px}
+.zone-head{display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:16px;color:#fff;margin:6px 0 14px;font-weight:700;font-size:18px}
+.zone-head.eq{background:linear-gradient(90deg,#0b5d39,#16a765)}
+.zone-head.tu{background:linear-gradient(90deg,#134f86,#5fb2ff)}
+
+/* Accordion */
+details.acc{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+details.acc summary{list-style:none;cursor:pointer;padding:13px 16px;font-weight:600;display:flex;align-items:center;gap:10px}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary::after{content:"+";margin-left:auto;font-size:20px;color:var(--muted)}
+details.acc[open] summary::after{content:"−"}
+details.acc[open] summary{background:#f7faf9;border-bottom:1px solid var(--line)}
+.acc-body{padding:12px 18px 16px}
+.num{min-width:26px;height:26px;border-radius:8px;background:var(--green);color:#fff;font-size:13px;display:grid;place-items:center}
+.tu .num{background:var(--ice)}
+
+/* Tables */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+th{background:#eef5f1}
+th.g{background:#d9f1e4} th.b{background:#dbeafa}
+tr:nth-child(even) td{background:#fafcfb}
+
+/* Rain layers */
+.layers{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.layer{border-radius:10px;padding:10px 14px;color:#fff;font-size:14px}
+.l1{background:#0b5d39}.l2{background:#138a55}.l3{background:#4cb07a}
+
+/* Glossary */
+.term{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff}
+.term b{color:var(--green);font-size:15px}
+.term.t b{color:var(--ice)}
+.term p{font-size:14px;color:#33404d;margin-top:2px}
+.search{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:12px;font:14px 'Poppins','Noto Sans Malayalam';margin-bottom:12px}
+
+/* Q&A */
+.qa{border:1px solid var(--line);border-radius:14px;margin-bottom:10px;background:#fff;overflow:hidden}
+.qa-q{padding:12px 16px;font-weight:600;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa-q .mk{margin-left:auto;flex-shrink:0;background:#fff3e0;color:#b85c00;font-size:11px;border-radius:999px;padding:2px 9px;font-family:'Poppins'}
+.qa-a{display:none;padding:0 16px 14px 16px;border-top:1px dashed var(--line);font-size:14.5px}
+.qa.open .qa-a{display:block;padding-top:10px}
+.qa-tools{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.btn-g{background:var(--green);color:#fff}
+.btn-o{background:#fff;color:var(--green);border:1px solid var(--green)}
+
+/* Quiz */
+.quiz-start{text-align:center;padding:30px 20px}
+.quiz-start .big{font-size:54px}
+.quiz-start h2{font-size:24px;margin:6px 0}
+.q-input{padding:11px 14px;border:1px solid var(--line);border-radius:12px;width:min(320px,100%);font:15px 'Poppins','Noto Sans Malayalam';margin:14px 0 8px;text-align:center}
+.btn-big{padding:12px 28px;font-size:15px;border-radius:14px}
+.btn-red{background:linear-gradient(90deg,#d64545,#f08a24);color:#fff}
+.q-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600}
+.pill.t{color:var(--red)}
+.bar{height:8px;background:#e7ecea;border-radius:999px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--ice));transition:.3s}
+.q-text{font-size:18px;font-weight:600;margin-bottom:14px}
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;cursor:pointer;font:15px 'Noto Sans Malayalam','Poppins';color:var(--ink);transition:.15s}
+.opt:hover{border-color:var(--ice2)}
+.opt .L{width:30px;height:30px;border-radius:9px;background:#eef3f1;display:grid;place-items:center;font-weight:700;flex-shrink:0;font-family:'Poppins'}
+.opt.ok{border-color:#1f9d5a;background:#e9f8ef}.opt.ok .L{background:#1f9d5a;color:#fff}
+.opt.no{border-color:var(--red);background:#fdecec}.opt.no .L{background:var(--red);color:#fff}
+.opt:disabled{cursor:default}
+.exp{display:none;background:var(--soft-b);border-radius:12px;padding:10px 14px;font-size:14px;margin-top:4px}
+.exp.show{display:block}
+.q-nav{display:flex;justify-content:flex-end;margin-top:14px}
+.result{text-align:center;padding:24px 10px}
+.ring{width:150px;height:150px;border-radius:50%;margin:10px auto;display:grid;place-items:center;background:conic-gradient(var(--green) calc(var(--p)*1%),#e7ecea 0)}
+.ring div{width:118px;height:118px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:30px;font-weight:800}
+.ring small{display:block;font-size:13px;color:var(--muted);font-weight:600}
+.grade{font-size:22px;font-weight:800;margin:6px 0}
+.res-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.btn-wa{background:#25d366;color:#fff}
+.review{text-align:left;margin-top:20px}
+.rv{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;font-size:14px;background:#fff}
+.rv.w{border-left:4px solid var(--red)} .rv.r{border-left:4px solid #1f9d5a}
+
+footer{text-align:center;color:var(--muted);font-size:13px;padding:20px 16px 30px}
+
+/* Print */
+.wm{display:none}
+
+.hero-card{background:linear-gradient(120deg,#0b5d39 0%,#0f7a4a 40%,#1d6fb8 100%)}
+.hero-card::after{content:"⚖"}
+.hero-card::before{content:"🛒"}
+table.ctr td,table.ctr th{text-align:center}
+tr.hl td{background:#fff3d6!important;font-weight:700}
+.chart-card{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff}
+.chart-title{font-weight:700;font-size:14px;margin-bottom:4px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:4px}
+.legend>span{display:inline-flex;align-items:center;gap:6px}
+.sw{display:inline-block;width:18px;height:0;border-top:3px solid}
+.sw.tu{border-color:#d9730d}.sw.mu{border-color:#0f7a4a;border-top-style:dashed}
+.chart-wrap{position:relative}
+#uChart{width:100%;height:auto;display:block}
+#uChart text,#uChart .axl{font:16px 'Poppins',sans-serif;fill:#5b6776}
+#uChart .lbl{font-weight:700;fill:#1b2430;font-size:17px}
+.tip{position:absolute;pointer-events:none;background:#1b2430;color:#fff;font-size:12px;padding:6px 9px;border-radius:8px;opacity:0;transition:opacity .12s;white-space:nowrap;transform:translate(-50%,-110%)}
+.tip.show{opacity:1}
+.tier{display:flex;flex-direction:column;align-items:center;gap:2px;margin:10px 0 14px}
+.tier>div:not(.arr){width:min(520px,100%);text-align:center;border-radius:12px;padding:9px 12px;border:1.5px solid}
+.tier small{display:block;font-size:12.5px;opacity:.85}
+.tier .t0{background:#e6f1fc;border-color:#5fb2ff;font-weight:700;width:min(260px,100%)!important}
+.tier .t1{background:#fdecec;border-color:#e08a8a}
+.tier .t2{background:#e7f6ee;border-color:#7cc7a0}
+.tier .t3{background:#fff8e1;border-color:#f0c85a}
+.tier .arr{color:var(--muted);font-size:13px;line-height:1}
+.rights{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.right{border:1px solid #bfe6d0;background:var(--soft-g);border-radius:14px;padding:12px 14px}
+.right b{font-size:15px}.right p{font-size:14px;margin-top:4px}
+ol.pts{padding-left:22px}
+@media print{
+  .chart-card{border:0;padding:0;max-width:105mm;margin:4px 0}.tip{display:none}
+  .tier>div:not(.arr){background:none!important;border:1px solid #777;padding:4px 8px}
+  .rights{display:block}.right{background:none!important;border:0;padding:0;margin-bottom:4px}
+  tr.hl td{background:#eee!important}
+}
+
+.print-head{display:none}
+.btn-share{background:linear-gradient(90deg,#1d6fb8,#5fb2ff);color:#fff}
+.share-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+body.quiz-only .hero,body.quiz-only .tabs-wrap,body.quiz-only .no-print{display:none!important}
+body.quiz-only .panel{display:none!important}
+body.quiz-only #p-quiz{display:block!important}
+body.quiz-only main{margin-top:20px}
+.qo-title{display:none;text-align:center;margin-bottom:14px}
+body.quiz-only .qo-title{display:block}
+.qo-title h1{font-size:clamp(18px,3.5vw,24px);line-height:1.4}
+.qo-title small{color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1b2430;color:#fff;padding:9px 16px;border-radius:999px;font-size:13px;opacity:0;transition:.3s;z-index:99;pointer-events:none}
+.toast.show{opacity:1}
+@media print{
+  @page{size:A4;margin:12mm 12mm 14mm}
+  *{box-shadow:none!important;animation:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{background:#fff!important;font-size:10.5pt;line-height:1.5;color:#000}
+  .topbar,.tabs-wrap,.hero,.qa-tools,.no-print,footer,#p-quiz,#p-overview .card:nth-child(2),.search,.chip,.stats{display:none!important}
+
+  /* Simple title block */
+  .print-head{display:block;text-align:center;border-bottom:2px solid #000;padding-bottom:6px;margin-bottom:10px}
+  .print-head b{display:block;font-size:13pt;letter-spacing:1px}
+  .print-head h1{font-size:15pt;margin:2px 0;line-height:1.3}
+  .print-head small{font-size:9pt;color:#333}
+
+  main{margin:0!important;padding:0!important;max-width:none}
+  .panel{display:block!important;margin:0}
+
+  /* Flatten cards: no boxes, no padding gaps */
+  .card,details.acc,.qa,.mini,.term{border:0!important;border-radius:0!important;background:none!important;padding:0!important;margin:0 0 6px!important}
+  .grid2,.grid3{display:block!important}
+  .mini{margin-bottom:4px!important}
+
+  /* Headings */
+  h2.sec{font-size:12.5pt;margin:10px 0 4px;padding-bottom:2px;border-bottom:1px solid #999;break-after:avoid}
+  h2.sec .ico{display:none}
+  .zone-head{background:none!important;color:#000!important;border:0;border-bottom:2px solid #000;border-radius:0;padding:0 0 3px;margin:14px 0 6px;font-size:14pt;break-after:avoid}
+  h3{font-size:11pt;margin:6px 0 2px;color:#000!important;break-after:avoid}
+  details.acc{display:block!important;break-inside:auto!important}
+  details.acc summary{display:block!important;padding:4px 0 2px!important;background:none!important;border:0!important;font-size:11.5pt;font-weight:700;break-after:avoid}
+  details.acc summary::after{content:none!important}
+  .num{display:inline!important;background:none!important;color:#000!important;min-width:auto;height:auto;font-weight:700;margin-right:4px}
+  .num::after{content:"."}
+  .acc-body{display:block!important;padding:0 0 0 4px!important}
+  ul.pts{padding-left:16px}
+  ul.pts li{margin:1px 0}
+  p{margin:2px 0}
+
+  /* Info boxes → thin left rule */
+  .box{background:none!important;border:0;border-left:3px solid #555!important;border-radius:0;padding:2px 8px;margin:5px 0;font-size:10pt;break-inside:avoid}
+  .layers{gap:2px;margin:2px 0 4px}
+  .layer{background:none!important;color:#000!important;padding:1px 0;border-radius:0}
+  .layer::before{content:"▸ "}
+
+  /* Tables */
+  .tbl-wrap{overflow:visible}
+  table{font-size:9.5pt;margin:4px 0}
+  th,td{padding:3px 6px;border:1px solid #777}
+  th,th.g,th.b{background:#eee!important}
+  tr:nth-child(even) td{background:none!important}
+  tr{break-inside:avoid}
+
+  /* Key terms: compact two-column list */
+  #termGrid{display:block!important;column-count:2;column-gap:14px}
+  .term{break-inside:avoid;margin:0 0 4px!important}
+  .term b{color:#000!important;font-size:10pt}
+  .term p{font-size:9.5pt;margin:0;color:#000}
+
+  /* Q&A */
+  .qa{break-inside:avoid;margin-bottom:6px!important}
+  .qa-q{padding:0!important;cursor:auto}
+  .qa-q .mk{background:none;color:#000;border:1px solid #777;padding:0 5px}
+  .qa-a{display:block!important;border:0!important;padding:1px 0 0 18px!important;font-size:10pt}
+
+  .wm{display:block;position:fixed;top:45%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:70px;font-weight:800;color:rgba(0,0,0,.05);white-space:nowrap;z-index:-1}
+}
+@media(max-width:600px){
+  .brand small{display:none}
+  .tabs-wrap{top:58px}
+  .hero-card{padding:20px 18px}
+  .card{padding:16px}
+}
+
+.qo-title{display:block}
+.notes-link{display:inline-block;margin-top:8px;font-size:13px;font-weight:600;color:var(--green);text-decoration:none;border:1px solid #bfe6d0;background:var(--soft-g);padding:5px 12px;border-radius:999px}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="logo">A</div>
+    <div class="brand"><b>ABACUS ACADEMY</b><small>SSLC Quiz · Social Science II</small></div>
+    <div class="spacer"></div>
+    <div class="lang" role="group" aria-label="Medium">
+      <button id="bML" class="on" onclick="setLang('ml')">MAL</button>
+      <button id="bEN" onclick="setLang('en')">ENG</button>
+    </div>
+  </div>
+</header>
+
+<main style="margin-top:20px">
+<section class="panel on" id="p-quiz">
+  <div class="qo-title"><span class="tag" style="background:var(--soft-g);color:var(--green);border-color:#bfe6d0">SOCIAL SCIENCE II · UNIT 4 · 20 MARK QUIZ</span>
+    <h1><span class="ml">ഉപഭോക്താവ്: അവകാശങ്ങളും സംരക്ഷണവും</span><span class="en">Consumer: Rights and Protection</span></h1>
+    <small>Abacus Academy · SSLC Social Science II</small><br>
+    <a class="notes-link" href="geography-unit4.html" target="_blank">📘 Study Notes</a></div>
+  <div class="card" id="quizBox"></div>
+</section>
+</main>
+
+<footer>© Abacus Academy · SSLC Study Portal · Social Science II Unit 4 Quiz</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- Language ---------- */
+function setLang(l){
+  document.body.classList.toggle('en', l==='en');
+  document.documentElement.lang = l==='en' ? 'en' : 'ml';
+  document.getElementById('bML').classList.toggle('on', l!=='en');
+  document.getElementById('bEN').classList.toggle('on', l==='en');
+  try{localStorage.setItem('geo4_lang', l);}catch(e){}
+  if(quizState.stage==='q') renderQuestion();
+  if(quizState.stage==='done') renderResult();
+  if(quizState.stage==='start') renderStart();
+}
+function L(o){ return document.body.classList.contains('en') ? o.en : o.ml; }
+
+
+/* ---------- 20 MARK QUIZ ---------- */
+var QUIZ = [{"q": {"ml": "ഉപഭോക്തൃ സംതൃപ്തി അളക്കാൻ ആദ്യശ്രമം നടത്തിയ സാമ്പത്തിക ശാസ്ത്രജ്ഞൻ?", "en": "Who first tried to measure consumer satisfaction?"}, "o": [{"ml": "ആഡം സ്മിത്ത്", "en": "Adam Smith"}, {"ml": "ആൽഫ്രഡ് മാർഷൽ", "en": "Alfred Marshall"}, {"ml": "ജെ.എം. കെയ്ൻസ്", "en": "J.M. Keynes"}, {"ml": "അമർത്യ സെൻ", "en": "Amartya Sen"}], "a": 1, "e": {"ml": "ആൽഫ്രഡ് മാർഷൽ.", "en": "Alfred Marshall."}}, {"q": {"ml": "ഉപയുക്തത അളക്കുന്ന യൂണിറ്റ്?", "en": "The unit of utility is —"}, "o": [{"ml": "യൂട്ടിൽസ്", "en": "Utils"}, {"ml": "രൂപ", "en": "Rupees"}, {"ml": "കിലോഗ്രാം", "en": "Kilogram"}, {"ml": "ശതമാനം", "en": "Percent"}], "a": 0, "e": {"ml": "യൂട്ടിൽസ് (Utils).", "en": "Utils."}}, {"q": {"ml": "ആദ്യ ഓറഞ്ചിന് 20, രണ്ടാമത്തേതിന് ശേഷം TU 38. രണ്ടാമത്തെ ഓറഞ്ചിന്റെ MU?", "en": "TU is 20 after one orange and 38 after two. MU of the 2nd orange?"}, "o": [{"ml": "38", "en": "38"}, {"ml": "20", "en": "20"}, {"ml": "18", "en": "18"}, {"ml": "58", "en": "58"}], "a": 2, "e": {"ml": "MU = 38 − 20 = 18.", "en": "MU = 38 − 20 = 18."}}, {"q": {"ml": "സീമാന്ത ഉപയുക്തത പൂജ്യമാകുമ്പോൾ മൊത്തം ഉപയുക്തത —", "en": "When MU is zero, TU is —"}, "o": [{"ml": "പൂജ്യം", "en": "Zero"}, {"ml": "പരമാവധി", "en": "Maximum"}, {"ml": "നെഗറ്റീവ്", "en": "Negative"}, {"ml": "കുറയുന്നു", "en": "Falling"}], "a": 1, "e": {"ml": "MU = 0 ആകുമ്പോൾ TU പരമാവധി (67).", "en": "When MU = 0, TU is at its maximum (67)."}}, {"q": {"ml": "സീമാന്ത ഉപയുക്തത നെഗറ്റീവ് ആകുമ്പോൾ മൊത്തം ഉപയുക്തത —", "en": "When MU is negative, TU —"}, "o": [{"ml": "കൂടുന്നു", "en": "Rises"}, {"ml": "സ്ഥിരമാകുന്നു", "en": "Stays constant"}, {"ml": "കുറയുന്നു", "en": "Falls"}, {"ml": "പൂജ്യമാകുന്നു", "en": "Becomes zero"}], "a": 2, "e": {"ml": "MU നെഗറ്റീവ് → TU കുറയുന്നു.", "en": "Negative MU → TU falls."}}, {"q": {"ml": "സംതൃപ്തി എണ്ണൽസംഖ്യ ഉപയോഗിച്ച് തിട്ടപ്പെടുത്താമെന്ന വാദം?", "en": "The theory that satisfaction can be measured in cardinal numbers?"}, "o": [{"ml": "ഓർഡിനൽ വാദം", "en": "Ordinal theory"}, {"ml": "കാർഡിനൽ ഉപയുക്തതാവാദം", "en": "Cardinal utility theory"}, {"ml": "ചോദന നിയമം", "en": "Law of demand"}, {"ml": "ഉൽപ്പാദന വാദം", "en": "Production theory"}], "a": 1, "e": {"ml": "കാർഡിനൽ ഉപയുക്തതാവാദം.", "en": "Cardinal Utility Theory."}}, {"q": {"ml": "അപചയ സീമാന്ത ഉപയുക്തത നിയമത്തിന്റെ അനുമാനം ഏത്?", "en": "Which is an assumption of the Law of Diminishing MU?"}, "o": [{"ml": "വരുമാനം മാറിക്കൊണ്ടിരിക്കണം", "en": "Income keeps changing"}, {"ml": "ഉൽപ്പന്നങ്ങൾ ഒരേ ഗുണമേന്മയുള്ളതായിരിക്കണം", "en": "All units are of the same quality"}, {"ml": "ഉപഭോഗം ഇടവിട്ടായിരിക്കണം", "en": "Consumption with long gaps"}, {"ml": "അഭിരുചി മാറണം", "en": "Taste changes"}], "a": 1, "e": {"ml": "ഒരേ ഗുണമേന്മ; വരുമാനവും അഭിരുചിയും സ്ഥിരം.", "en": "Same quality; income and taste constant."}}, {"q": {"ml": "സൂര്യപ്രകാശവും വായുവും ഏത് തരം സാധനങ്ങൾ?", "en": "Sunlight and air are —"}, "o": [{"ml": "സൗജന്യസാധനങ്ങൾ", "en": "Free goods"}, {"ml": "ഇക്കണോമിക് സാധനങ്ങൾ", "en": "Economic goods"}, {"ml": "മൂലധനസാധനങ്ങൾ", "en": "Capital goods"}, {"ml": "ഈട് നിൽക്കുന്ന സാധനങ്ങൾ", "en": "Durable goods"}], "a": 0, "e": {"ml": "പ്രകൃതിയിൽ ധാരാളമുള്ള, വില നൽകേണ്ടാത്തവ — സൗജന്യസാധനങ്ങൾ.", "en": "Abundant in nature with no price — free goods."}}, {"q": {"ml": "ഫാക്ടറികളും യന്ത്രങ്ങളും ഏത് വിഭാഗത്തിൽ?", "en": "Factories and machinery are —"}, "o": [{"ml": "ഉപഭോഗ സാധനങ്ങൾ", "en": "Consumer goods"}, {"ml": "സൗജന്യസാധനങ്ങൾ", "en": "Free goods"}, {"ml": "മൂലധനസാധനങ്ങൾ", "en": "Capital goods"}, {"ml": "ഈട് നിൽക്കാത്ത സാധനങ്ങൾ", "en": "Non-durable goods"}], "a": 2, "e": {"ml": "മറ്റ് ഉൽപ്പന്നങ്ങൾ ഉൽപ്പാദിപ്പിക്കാനുള്ളവ — മൂലധനസാധനങ്ങൾ.", "en": "Used to produce other goods — capital goods."}}, {"q": {"ml": "ഇന്ത്യയിൽ GST നിലവിൽ വന്നത്?", "en": "GST came into force in India on —"}, "o": [{"ml": "2016 ഏപ്രിൽ 1", "en": "1 April 2016"}, {"ml": "2017 ജൂലൈ 1", "en": "1 July 2017"}, {"ml": "2019 ജനുവരി 1", "en": "1 January 2019"}, {"ml": "2020 ജൂലൈ 20", "en": "20 July 2020"}], "a": 1, "e": {"ml": "ഭരണഘടനയുടെ 101-ാം ഭേദഗതി; 2017 ജൂലൈ 1.", "en": "101st Amendment; 1 July 2017."}}, {"q": {"ml": "GST-യുടെ എത്ര ശതമാനമാണ് സംസ്ഥാന സർക്കാരിന് (SGST) ലഭിക്കുന്നത്?", "en": "What share of GST goes to the State (SGST)?"}, "o": [{"ml": "25%", "en": "25%"}, {"ml": "40%", "en": "40%"}, {"ml": "50%", "en": "50%"}, {"ml": "75%", "en": "75%"}], "a": 2, "e": {"ml": "50% SGST, 50% CGST.", "en": "50% SGST, 50% CGST."}}, {"q": {"ml": "ഇന്ത്യയിൽ ഉപഭോക്തൃ സംരക്ഷണ പ്രസ്ഥാനം ആരംഭിച്ചത്?", "en": "India's consumer protection movement began with —"}, "o": [{"ml": "1966-ൽ കൺസ്യൂമർ ഗൈഡൻസ് സൊസൈറ്റി ഓഫ് ഇന്ത്യ, ബോംബെ", "en": "Consumer Guidance Society of India, Bombay, 1966"}, {"ml": "1986-ൽ ഡൽഹിയിൽ NCDRC", "en": "NCDRC, Delhi, 1986"}, {"ml": "1947-ൽ BIS", "en": "BIS, 1947"}, {"ml": "2019-ൽ CCPA", "en": "CCPA, 2019"}], "a": 0, "e": {"ml": "1966, ബോംബെ.", "en": "1966, Bombay."}}, {"q": {"ml": "ദേശീയ ഉപഭോക്തൃദിനം?", "en": "National Consumer Day is —"}, "o": [{"ml": "മാർച്ച് 15", "en": "15 March"}, {"ml": "ഡിസംബർ 24", "en": "24 December"}, {"ml": "ജൂലൈ 1", "en": "1 July"}, {"ml": "ഒക്ടോബർ 2", "en": "2 October"}], "a": 1, "e": {"ml": "1986 ഡിസംബർ 24-ന് നിയമം നിലവിൽ വന്നതിന്റെ ഓർമ്മ.", "en": "Marks the 1986 Act coming into force on 24 December."}}, {"q": {"ml": "ഉപഭോക്തൃ സംരക്ഷണ നിയമം 2019 നിലവിൽ വന്നത്?", "en": "The Consumer Protection Act 2019 came into force on —"}, "o": [{"ml": "2019 ഡിസംബർ 24", "en": "24 December 2019"}, {"ml": "2020 ജൂലൈ 20", "en": "20 July 2020"}, {"ml": "2017 ജൂലൈ 1", "en": "1 July 2017"}, {"ml": "2021 ജനുവരി 1", "en": "1 January 2021"}], "a": 1, "e": {"ml": "2020 ജൂലൈ 20.", "en": "20 July 2020."}}, {"q": {"ml": "2019-ലെ നിയമപ്രകാരം സ്ഥാപിച്ച അതോറിറ്റി?", "en": "Which authority was set up under the 2019 Act?"}, "o": [{"ml": "RBI", "en": "RBI"}, {"ml": "SEBI", "en": "SEBI"}, {"ml": "CCPA", "en": "CCPA"}, {"ml": "TRAI", "en": "TRAI"}], "a": 2, "e": {"ml": "സെൻട്രൽ കൺസ്യൂമർ പ്രൊട്ടക്ഷൻ അതോറിറ്റി (CCPA).", "en": "Central Consumer Protection Authority (CCPA)."}}, {"q": {"ml": "ഗുണമേന്മ, അളവ്, പരിശുദ്ധി, വിലനിലവാരം എന്നിവ അറിയാനുള്ള അവകാശം?", "en": "The right to know quality, quantity, purity and price is —"}, "o": [{"ml": "സുരക്ഷിതത്വത്തിനുള്ള അവകാശം", "en": "Right to safety"}, {"ml": "തിരഞ്ഞെടുക്കാനുള്ള അവകാശം", "en": "Right to choose"}, {"ml": "അറിയാനുള്ള അവകാശം", "en": "Right to information"}, {"ml": "പരിഹാരം തേടാനുള്ള അവകാശം", "en": "Right to seek redressal"}], "a": 2, "e": {"ml": "അറിയാനുള്ള അവകാശം.", "en": "Right to information."}}, {"q": {"ml": "5 കോടി രൂപ നഷ്ടപരിഹാരം ആവശ്യപ്പെടുന്ന കേസ് പരിഗണിക്കുന്നത്?", "en": "A case claiming ₹5 crore compensation goes to —"}, "o": [{"ml": "ജില്ലാ കമ്മീഷൻ", "en": "District Commission"}, {"ml": "സംസ്ഥാന കമ്മീഷൻ", "en": "State Commission"}, {"ml": "ദേശീയ കമ്മീഷൻ", "en": "National Commission"}, {"ml": "സുപ്രീം കോടതി", "en": "Supreme Court"}], "a": 1, "e": {"ml": "1 കോടി മുതൽ 10 കോടി വരെ — സംസ്ഥാന കമ്മീഷൻ.", "en": "₹1–10 crore — State Commission."}}, {"q": {"ml": "ബാങ്ക് 30 ദിവസത്തിനുള്ളിൽ മറുപടി നൽകിയില്ലെങ്കിൽ സമീപിക്കേണ്ടത്?", "en": "If the bank does not reply within 30 days, approach —"}, "o": [{"ml": "സൈബർ സെൽ", "en": "Cyber Cell"}, {"ml": "RBI ഓംബുഡ്സ്മാൻ", "en": "RBI Ombudsman"}, {"ml": "POE", "en": "POE"}, {"ml": "FSSAI", "en": "FSSAI"}], "a": 1, "e": {"ml": "RBI ഓംബുഡ്സ്മാൻ — ടോൾ ഫ്രീ 14448.", "en": "RBI Ombudsman — toll-free 14448."}}, {"q": {"ml": "കാർഷിക-വന ഉൽപ്പന്നങ്ങളുടെ ഗുണമേന്മ ഉറപ്പാക്കുന്ന ചിഹ്നം?", "en": "The quality mark for agricultural and forest products is —"}, "o": [{"ml": "ISI", "en": "ISI"}, {"ml": "AGMARK", "en": "AGMARK"}, {"ml": "FSSAI", "en": "FSSAI"}, {"ml": "BIS Hallmark", "en": "BIS Hallmark"}], "a": 1, "e": {"ml": "AGMARK. ISI — വ്യാവസായിക ഉൽപ്പന്നങ്ങൾ; FSSAI — ഭക്ഷ്യസുരക്ഷ.", "en": "AGMARK. ISI — industrial; FSSAI — food safety."}}, {"q": {"ml": "ദേശീയ ഉപഭോക്തൃ ഹെൽപ്പ്‌ലൈൻ നമ്പർ?", "en": "The National Consumer Helpline number is —"}, "o": [{"ml": "1800-11-4000", "en": "1800-11-4000"}, {"ml": "14448", "en": "14448"}, {"ml": "1800-11-3090", "en": "1800-11-3090"}, {"ml": "112", "en": "112"}], "a": 0, "e": {"ml": "1800-11-4000 — ജാഗോ ഗ്രാഹക് ജാഗോ.", "en": "1800-11-4000 — Jago Grahak Jago."}}];
+
+var quizState = {stage:'start', name:'', order:[], i:0, answers:[], t0:0, timer:null, secs:0, shuffled:{}};
+var QUIZ_TIME = 20*60;
+
+function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
+
+function renderStart(){
+  quizState.stage='start';
+  document.getElementById('quizBox').innerHTML =
+   '<div class="quiz-start"><div class="big">🏆</div>'+
+   '<h2><span class="ml">20 മാർക്ക് ക്വിസ്</span><span class="en">20 Mark Quiz</span></h2>'+
+   '<p><span class="ml">അധ്യായം മുഴുവൻ ഉൾക്കൊള്ളുന്ന 20 ചോദ്യങ്ങൾ · ഓരോന്നിനും 1 മാർക്ക് · 20 മിനിറ്റ്</span><span class="en">20 questions covering the whole chapter · 1 mark each · 20 minutes</span></p>'+
+   '<input class="q-input" id="stuName" placeholder="Student name / പേര്" value="'+(quizState.name||'').replace(/"/g,'&quot;')+'">'+
+   '<br><button class="btn btn-big btn-red" onclick="startQuiz()">Start Quiz ▶</button>'+
+   '<div class="share-row">'+shareButtons()+'</div></div>';
+}
+function startQuiz(){
+  var n=document.getElementById('stuName').value.trim();
+  if(!n){ document.getElementById('stuName').focus(); document.getElementById('stuName').style.borderColor='#d64545'; return; }
+  quizState.name=n;
+  quizState.order=shuffle(QUIZ.map(function(_,i){return i;}));
+  quizState.shuffled={};
+  quizState.order.forEach(function(qi){ quizState.shuffled[qi]=shuffle([0,1,2,3]); });
+  quizState.i=0; quizState.answers=[]; quizState.secs=QUIZ_TIME; quizState.stage='q';
+  clearInterval(quizState.timer);
+  quizState.timer=setInterval(function(){
+    quizState.secs--;
+    var el=document.getElementById('qTimer'); if(el) el.textContent='⏱ '+fmt(quizState.secs);
+    if(quizState.secs<=0){ clearInterval(quizState.timer); finishQuiz(); }
+  },1000);
+  renderQuestion();
+}
+function fmt(s){ s=Math.max(0,s); return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2); }
+function renderQuestion(){
+  var qi=quizState.order[quizState.i], Q=QUIZ[qi], ord=quizState.shuffled[qi];
+  var done=quizState.answers[quizState.i];
+  var h='<div class="q-top"><span class="pill">Q '+(quizState.i+1)+' / 20</span><span class="pill">✔ '+score()+'</span><span class="spacer"></span><span class="pill t" id="qTimer">⏱ '+fmt(quizState.secs)+'</span></div>';
+  h+='<div class="bar"><i style="width:'+((quizState.i)/20*100)+'%"></i></div>';
+  h+='<div class="q-text">'+L(Q.q)+'</div>';
+  ord.forEach(function(oi,k){
+    var cls='';
+    if(done!==undefined){ if(oi===Q.a) cls='ok'; else if(oi===done) cls='no'; }
+    h+='<button class="opt '+cls+'" '+(done!==undefined?'disabled':'')+' onclick="pick('+oi+')"><span class="L">'+'ABCD'[k]+'</span><span>'+L(Q.o[oi])+'</span></button>';
+  });
+  h+='<div class="exp '+(done!==undefined?'show':'')+'">💡 '+L(Q.e)+'</div>';
+  h+='<div class="q-nav">'+(done!==undefined?'<button class="btn btn-big btn-g" onclick="nextQ()">'+(quizState.i<19?'Next ▶':'See Result 🏁')+'</button>':'')+'</div>';
+  document.getElementById('quizBox').innerHTML=h;
+}
+function pick(oi){
+  if(quizState.answers[quizState.i]!==undefined) return;
+  quizState.answers[quizState.i]=oi;
+  renderQuestion();
+}
+function nextQ(){
+  if(quizState.i<19){ quizState.i++; renderQuestion(); }
+  else finishQuiz();
+}
+function score(){
+  var s=0; quizState.answers.forEach(function(a,i){ if(a===QUIZ[quizState.order[i]].a) s++; }); return s;
+}
+function finishQuiz(){
+  clearInterval(quizState.timer);
+  quizState.stage='done';
+  quizState.used=QUIZ_TIME-Math.max(0,quizState.secs);
+  renderResult();
+}
+function grade(s){
+  if(s>=18) return {g:'A+',ml:'അതിഗംഭീരം! 🌟',en:'Outstanding! 🌟'};
+  if(s>=16) return {g:'A',ml:'വളരെ നല്ലത്! 👏',en:'Excellent! 👏'};
+  if(s>=14) return {g:'B+',ml:'നല്ല പ്രകടനം 👍',en:'Very good 👍'};
+  if(s>=12) return {g:'B',ml:'നല്ലത് — കുറച്ചുകൂടി ശ്രമിക്കൂ',en:'Good — a little more effort'};
+  if(s>=10) return {g:'C+',ml:'നോട്ടുകൾ വീണ്ടും വായിക്കൂ',en:'Revise the notes again'};
+  if(s>=8) return {g:'C',ml:'കൂടുതൽ പഠിക്കണം',en:'Needs more study'};
+  return {g:'D',ml:'നോട്ടുകൾ ശ്രദ്ധയോടെ വായിച്ച് വീണ്ടും ശ്രമിക്കൂ',en:'Read the notes carefully and try again'};
+}
+function renderResult(){
+  var s=score(), g=grade(s), p=s/20*100;
+  var h='<div class="result"><h2>'+quizState.name+'</h2>';
+  h+='<div class="ring" style="--p:'+p+'"><div><span>'+s+'/20<small>'+Math.round(p)+'%</small></span></div></div>';
+  h+='<div class="grade">Grade '+g.g+'</div><p>'+L(g)+'</p>';
+  h+='<p style="color:var(--muted);font-size:13px">⏱ '+fmt(quizState.used||0)+' · '+quizState.answers.length+'/20 attempted</p>';
+  h+='<div class="res-btns"><button class="btn btn-big btn-g" onclick="startQuizAgain()">↻ Retry</button><button class="btn btn-big btn-wa" onclick="shareWA()">Share Score on WhatsApp</button>'+shareButtons()+'</div>';
+  h+='<div class="review"><h3>Review</h3>';
+  quizState.order.forEach(function(qi,i){
+    var Q=QUIZ[qi], a=quizState.answers[i], ok=a===Q.a;
+    h+='<div class="rv '+(ok?'r':'w')+'"><b>'+(i+1)+'. '+L(Q.q)+'</b><br>'+
+       (ok?'✅ ':'❌ '+(a===undefined?'—':L(Q.o[a]))+' &nbsp;→&nbsp; ✅ ')+'<b>'+L(Q.o[Q.a])+'</b></div>';
+  });
+  h+='</div></div>';
+  document.getElementById('quizBox').innerHTML=h;
+}
+function startQuizAgain(){ renderStart(); }
+function shareWA(){
+  var s=score(), g=grade(s);
+  var msg='🏆 *ABACUS ACADEMY — SSLC Social Science II Unit 4 Quiz*\n'+
+    'ഉപഭോക്താവ്: അവകാശങ്ങളും സംരക്ഷണവും\n\n'+
+    '👤 '+quizState.name+'\n✅ Score: '+s+'/20\n🎖 Grade: '+g.g+'\n⏱ Time: '+fmt(quizState.used||0);
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+}
+
+
+
+/* ---------- Share ---------- */
+function quizURL(){ return location.href.split('#')[0].split('?')[0]; }
+function shareButtons(){ return '<button class="btn btn-big btn-share" onclick="shareQuizLink()">🔗 Share Quiz Link</button>'; }
+function toast(t){ var e=document.getElementById('toast'); e.textContent=t; e.classList.add('show'); setTimeout(function(){e.classList.remove('show');},2200); }
+function shareQuizLink(){
+  var url=quizURL(), text='🏆 Abacus Academy — SSLC Social Science II Unit 4 · 20 Mark Quiz\nഉപഭോക്താവ്: അവകാശങ്ങളും സംരക്ഷണവും';
+  if(navigator.share){ navigator.share({title:'SS II Unit 4 Quiz',text:text,url:url}).catch(function(){}); return; }
+  window.open('https://wa.me/?text='+encodeURIComponent(text+'\n'+url),'_blank');
+}
+
+/* ---------- Init ---------- */
+(function(){
+  var l='ml'; try{ l=localStorage.getItem('geo4_lang')||'ml'; }catch(e){}
+  renderStart();
+  setLang(l);
+})();
+
+</script>
+</body>
+</html>
